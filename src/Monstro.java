@@ -43,11 +43,17 @@ public abstract class Monstro {
         this.nivelPoder = nivelPoder;
     }
 
-    public void ataque(){
-        IO.println("!Seu personagem está atacando!");
+    public void ataque(Monstro inimigo){
+        IO.println(getNome() + " está atacando " + inimigo.getNome() + "!!!!" );
+
+        int dano = getNivelPoder();
+        inimigo.setVida(inimigo.getVida() - dano);
+
+        IO.println(inimigo.getNome() + " recebeu " + dano + " de dano!");
+
     }
 
-    public void defesa(){
+    public void defesa(Monstro inimigo){
         IO.println("!seu personagem está defendendo!");
     }
 
@@ -55,5 +61,18 @@ public abstract class Monstro {
         IO.println("O monstro está usando seu poder especial!");
     }
 
+    @Override
+    public String toString() {
+        return "Monstro{" +
+                "nome='" + nome + '\'' +
+                ", defesa=" + defesa +
+                ", vida=" + vida +
+                ", nivelPoder=" + nivelPoder +
+                '}';
+    }
+    }
 
-}
+
+
+
+
