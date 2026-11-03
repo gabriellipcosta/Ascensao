@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 public class Sereia extends Monstro {
 
     public Sereia(String nome, int defesa, int vida, int nivelPoder) {
@@ -10,3 +11,19 @@ public class Sereia extends Monstro {
     }
 }
 
+=======
+public class Sereia extends Monstro{
+
+
+    public Sereia(String nome, int defesa, int vida, int nivelPoder) {
+        super(nome, defesa, vida, nivelPoder);
+
+    }
+
+
+    @Override
+    public void poderEspecial() {
+        IO.println("Seu adversario está com lentidão!");
+    }
+}
+>>>>>>> 427828be6397848e7e3f6196b1cd7b983290ff29
