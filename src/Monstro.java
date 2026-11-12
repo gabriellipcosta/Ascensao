@@ -1,17 +1,11 @@
-public abstract class Monstro {
-<<<<<<< HEAD
+public abstract class Monstro implements Combate{
 
-=======
->>>>>>> 427828be6397848e7e3f6196b1cd7b983290ff29
     private String nome;
     private int defesa;
     private int vida;
     private int nivelPoder;
+    private Arma equipar;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 427828be6397848e7e3f6196b1cd7b983290ff29
     public String getNome() {
         return nome;
     }
@@ -51,37 +45,37 @@ public abstract class Monstro {
         this.nivelPoder = nivelPoder;
     }
 
-<<<<<<< HEAD
-    public void ataque(){
-        IO.println("Seu personagem está atacando!!");
+    public void equiparArma (Arma arma){
+        this.equipar= arma;
+        this.nivelPoder += arma.getBonusPoder();
+        System.out.println(getNome() + " equipou a arma " + arma.nome + " (+" + arma.getBonusPoder() + " de poder)!");
     }
 
-    public void defesa(){
-        IO.println("Seu personagem ta defendendooo!!");
+    public void ataque(Monstro inimigo) {
 
-    }
-
-    public void poderEspecial(){
-        IO.println("O monstro esta usando seu poder especial");
-    }
-}
-=======
-    public void ataque(Monstro inimigo){
-        IO.println(getNome() + " está atacando " + inimigo.getNome() + "!!!!" );
+        System.out.println(getNome() + " está atacando " + inimigo.getNome() + "!!!!");
 
         int dano = getNivelPoder();
+
         inimigo.setVida(inimigo.getVida() - dano);
 
-        IO.println(inimigo.getNome() + " recebeu " + dano + " de dano!");
-
+        System.out.println(inimigo.getNome() + " recebeu " + dano + " de dano!");
     }
 
-    public void defesa(Monstro inimigo){
-        IO.println("!seu personagem está defendendo!");
+    public void defesa(Monstro inimigo) {
+        System.out.println(getNome() + " está defendendo o ataque de " + inimigo.getNome() + "!");
+
+        int danoReduzido = inimigo.getNivelPoder() - getDefesa();
+        if (danoReduzido < 0) {
+            danoReduzido = 0;
+        }
+
+        setVida(getVida() - danoReduzido);
+        System.out.println(getNome() + " defendeu e recebeu apenas " + danoReduzido + " de dano!");
     }
 
     public void poderEspecial() {
-        IO.println("O monstro está usando seu poder especial!");
+        System.out.println("O monstro está usando seu poder especial!");
     }
 
     @Override
@@ -93,10 +87,4 @@ public abstract class Monstro {
                 ", nivelPoder=" + nivelPoder +
                 '}';
     }
-    }
-
-
-
-
-
->>>>>>> 427828be6397848e7e3f6196b1cd7b983290ff29
+}
